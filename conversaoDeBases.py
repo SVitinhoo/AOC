@@ -58,17 +58,19 @@ def error_verificator(number: str, base_input: int) -> bool:
 print("Bases disponiveis: Binario, Térnario, Quaternário, Octal, Decimal, Hexadecimal [obs: coloque em forma numeral]")
 while True:
     print("=="*40)
-    base_input = int(input("Qual base vai ser da entrada ? "))
+    base_input = input("Qual base vai ser da entrada ? ").strip()
     # verificação se base de entrada está em uma das bases disponiveis
-    if base_input not in (2,3,4,8,10,16): 
-        print("Selecione uma opção valida")
+    if base_input not in ("2","3","4","8","10","16"): 
+        print("ERRO, use uma base valída!, exemplo: 8")
         continue
+    base_input = int(base_input)
 
     # verificação se base de saida está em uma das bases disponiveis
-    base_output = int(input("Qual vai ser a base de saida ? "))
-    if base_output not in (2,3,4,8,10,16):
-        print("Selecione uma opção valida")
+    base_output = input("Qual vai ser a base de saida ? ").strip()
+    if base_output not in ("2","3","4","8","10","16"):
+        print("ERRO, use uma base valída!, exemplo: 16")
         continue
+    base_output = int(base_output)
     
     value_input = str(input(f"Digite o valor a ser convertido da base {base_input} -> {base_output}: ").strip().upper())
     # analisa se o valor de entrada esteja de acordo com a base informada
@@ -93,5 +95,6 @@ while True:
     # quando o valor de entrada estiver na base decimal o programa converte o valor de entrada para a base de saida
     result = convert_base(value_input, base_output)
     print(f"Resultado: {result}")
-# https://www.convertworld.com/pt/numerais/base-3.html
+
+# https://www.convertworld.com/pt/numerais/base-3.html esse site começa a bugar com  números enormes
 # https://www.rapidtables.org/pt/convert/number/decimal-to-hex.html
